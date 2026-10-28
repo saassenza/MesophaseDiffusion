@@ -3,8 +3,7 @@ water channels of bicontinuous cubic phases, as a function of the reduced lipid
 length x = L/a (L: lipid length, a: lattice parameter).
 
 Data from Brownian Dynamics simulations, S. Assenza and R. Mezzenga,
-J. Chem. Phys. 148, 054902 (2018). Values are identical to those used by the
-online tool at https://www.salvatoreassenza.com/#tools.
+J. Chem. Phys. 148, 054902 (2018).
 """
 
 TABLES = {

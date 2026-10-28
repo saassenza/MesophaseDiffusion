@@ -20,7 +20,6 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://github.com/saassenza/MesophaseDiffusion"
-"Online tool" = "https://www.salvatoreassenza.com/#tools"
 
 [project.scripts]
 mesophase-diffusion = "mesophase_diffusion.cli:main"

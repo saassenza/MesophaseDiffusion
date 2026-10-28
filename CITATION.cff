@@ -5,7 +5,6 @@ version: 1.0.0
 date-released: 2026-10-28
 license: MIT
 repository-code: "https://github.com/saassenza/MesophaseDiffusion"
-url: "https://www.salvatoreassenza.com/#tools"
 authors:
   - family-names: Assenza
     given-names: Salvatore

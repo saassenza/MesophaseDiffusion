@@ -55,30 +55,41 @@ print(res.D, res.bound_water_fraction)
 | Input | Unit | Description |
 |---|---|---|
 | `phase` | – | `Pn3m`, `Im3m` or `Ia3d` |
-| `lattice` | nm | lattice parameter *a*, from SAXS |
+| `lattice` | nm | lattice parameter $a$, from SAXS |
 | `water` | % weight | water used to prepare the cubic phase |
 | `density` | g/cm³ | density of the lipid (water is taken as 1 g/cm³) |
-| `D0` | 10⁻⁵ cm²/s | diffusion coefficient of the molecule in pure water at `T0` |
+| `D0` | 10⁻⁵ cm²/s | diffusion coefficient $D_0$ of the molecule in pure water at `T0` |
 | `T0` | °C | temperature at which `D0` is known |
 | `Texp` | °C | temperature of the experiment |
-| `w` | nm | thickness of the layer of bound water next to the lipid heads; good values are usually 0.6–1.2 nm (about two to four water molecules) |
+| `w` | nm | thickness $w$ of the layer of bound water next to the lipid heads; good values are usually 0.6–1.2 nm (about two to four water molecules) |
 
-Outputs: the fraction of bound water *x*<sub>b</sub> (bound water molecules / total water molecules) and the effective diffusion coefficient *D* (10⁻⁵ cm²/s).
+Outputs: the fraction of bound water $x_b$ (bound water molecules / total water molecules) and the effective diffusion coefficient $D$ (10⁻⁵ cm²/s).
 
 ## Model
 
-1. **Structure.** The lipid length *L* follows from the lattice parameter and the lipid volume fraction φ<sub>L</sub>. It solves φ<sub>L</sub> = 2*A*<sub>0</sub>(*L*/*a*) + (4π/3)χ(*L*/*a*)³, with (*A*<sub>0</sub>, χ) = (1.919, −2), (2.345, −4) and (3.091, −8) for Pn3m, Im3m and Ia3d.
-2. **Channel geometry.** The molecule cannot enter the lipid bilayer, so the network of water channels slows down its diffusion by a factor (*D*/*D*<sub>0</sub>)(*L*/*a*). This factor was obtained from Brownian Dynamics simulations (Assenza and Mezzenga, 2018) and is linearly interpolated from the tables in `mesophase_diffusion/tables.py`.
-3. **Bound water.** A layer of thickness *w* next to the lipid heads is tightly bound to them and does not contribute to diffusion. Its fraction of the total water is
+1. **Structure.** The lipid length $L$ follows from the lattice parameter $a$ and the lipid volume fraction $\phi_L$ by solving
 
-   $$x_b = \frac{2A_0\,\xi + \frac{4\pi}{3}\chi\,\xi^3 - \phi_L}{1-\phi_L}, \qquad \xi = \frac{L + w}{a}.$$
+   $$\phi_L = 2A_0\,\frac{L}{a} + \frac{4\pi}{3}\,\chi \left(\frac{L}{a}\right)^3 ,$$
 
-4. **Temperature.** *D*<sub>0</sub> is rescaled from *T*<sub>0</sub> to *T*<sub>exp</sub> with the Stokes–Einstein relation, *D* ∝ *T*/η(*T*). The viscosity of water comes from the Vogel equation, log<sub>10</sub> η = −4.5318 − 220.57 / (149.39 − *T*), with *T* in K and η in Pa s.
-5. **Result:** *D* = (*D*/*D*<sub>0</sub>)(*L*/*a*) · (1 − *x*<sub>b</sub>) · *D*<sub>0</sub>(*T*<sub>exp</sub>).
+   with $(A_0, \chi) = (1.919, -2)$, $(2.345, -4)$ and $(3.091, -8)$ for Pn3m, Im3m and Ia3d.
+
+2. **Channel geometry.** The molecule cannot enter the lipid bilayer, so the network of water channels slows down its diffusion by a factor $(D/D_0)(L/a)$. This factor was obtained from Brownian Dynamics simulations (Assenza and Mezzenga, 2018) and is linearly interpolated from the tables in `mesophase_diffusion/tables.py`.
+
+3. **Bound water.** A layer of thickness $w$ next to the lipid heads is tightly bound to them and does not contribute to diffusion. Its fraction of the total water is
+
+   $$x_b = \frac{2A_0\,\xi + \frac{4\pi}{3}\chi\,\xi^3 - \phi_L}{1-\phi_L}, \qquad \xi = \frac{L + w}{a} .$$
+
+4. **Temperature.** $D_0$ is rescaled from $T_0$ to $T_\mathrm{exp}$ with the Stokes–Einstein relation, $D \propto T/\eta(T)$, using the Vogel equation for the viscosity of water ($T$ in K, $\eta$ in Pa s):
+
+   $$\log_{10}\eta = -4.5318 - \frac{220.57}{149.39 - T}, \qquad D_0(T_\mathrm{exp}) = D_0\,\frac{\eta(T_0)}{T_0}\,\frac{T_\mathrm{exp}}{\eta(T_\mathrm{exp})} .$$
+
+5. **Result.**
+
+   $$D = \left(\frac{D}{D_0}\right)\!\left(\frac{L}{a}\right)\,(1 - x_b)\,D_0(T_\mathrm{exp}) .$$
 
 ### Range of validity
 
-The simulation tables cover *L*/*a* ∈ [0, 0.3497] (Pn3m), [0, 0.2350] (Im3m) and [0, 0.2160] (Ia3d). The bound-water layer must also be thinner than the channel radius. Outside these limits the program stops with an explanatory error.
+The simulation tables cover $L/a \in [0, 0.3497]$ (Pn3m), $[0, 0.2350]$ (Im3m) and $[0, 0.2160]$ (Ia3d). The bound-water layer must also be thinner than the channel radius, $w < r$. Outside these limits the program stops with an explanatory error.
 
 ## How to cite
 

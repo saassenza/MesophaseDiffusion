@@ -1,7 +1,6 @@
 """Effective diffusion coefficient of hydrophilic molecules in lipidic cubic phases.
 
-Python port of the "Diffusion Coefficient in Water Channels" tool available at
-https://www.salvatoreassenza.com/#tools, following the analysis of
+Follows the analysis of
 S. Assenza and R. Mezzenga, J. Chem. Phys. 148, 054902 (2018).
 
 Model
