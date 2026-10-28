@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article below."
+title: "MesophaseDiffusion: Diffusion coefficients in the water channels of lipidic cubic phases"
+version: 1.0.0
+date-released: 2026-10-28
+license: MIT
+repository-code: "https://github.com/saassenza/MesophaseDiffusion"
+url: "https://www.salvatoreassenza.com/#tools"
+authors:
+  - family-names: Assenza
+    given-names: Salvatore
+    orcid: "https://orcid.org/0000-0001-9983-8927"
+    affiliation: "Universidad Autónoma de Madrid (IFIMAC)"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Assenza
+      given-names: Salvatore
+    - family-names: Mezzenga
+      given-names: Raffaele
+  title: "Curvature and bottlenecks control molecular transport in inverse bicontinuous cubic phases"
+  journal: "The Journal of Chemical Physics"
+  volume: 148
+  start: "054902"
+  year: 2018
+  doi: "10.1063/1.5019224"

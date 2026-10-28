@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mesophase-diffusion"
+version = "1.0.0"
+description = "Effective diffusion coefficient of hydrophilic molecules in lipidic cubic phases"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Salvatore Assenza"}]
+requires-python = ">=3.8"
+keywords = ["lipid mesophases", "cubic phases", "diffusion", "drug delivery"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+
+[project.urls]
+Homepage = "https://github.com/saassenza/MesophaseDiffusion"
+"Online tool" = "https://www.salvatoreassenza.com/#tools"
+
+[project.scripts]
+mesophase-diffusion = "mesophase_diffusion.cli:main"
+
+[tool.setuptools]
+packages = ["mesophase_diffusion"]
