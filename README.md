@@ -2,9 +2,6 @@
 
 Estimates the effective diffusion coefficient of a hydrophilic molecule in the water channels of a lipidic bicontinuous cubic phase (Pn3m, Im3m, Ia3d) from the structural features of the phase. It follows the analysis of [Assenza and Mezzenga, *J. Chem. Phys.* 148, 054902 (2018)](https://doi.org/10.1063/1.5019224).
 
-This is the Python version of the *Diffusion Coefficient in Water Channels* tool available online at
-[www.salvatoreassenza.com/#tools](https://www.salvatoreassenza.com/#tools). It gives identical results, and it adds batch processing of whole data sets and use from your own scripts.
-
 Pure Python (≥ 3.8), no dependencies.
 
 ## Installation
@@ -81,15 +78,7 @@ Outputs: the fraction of bound water *x*<sub>b</sub> (bound water molecules / to
 
 ### Range of validity
 
-The simulation tables cover *L*/*a* ∈ [0, 0.3497] (Pn3m), [0, 0.2350] (Im3m) and [0, 0.2160] (Ia3d). The bound-water layer must also be thinner than the channel radius. Outside these limits the program stops with an explanatory error. The online tool instead returns `NaN` in the first case and meaningless numbers in the second; this is the only difference in behaviour.
-
-## Tests
-
-```bash
-python -m unittest discover tests
-```
-
-The tests check that the results match the online tool.
+The simulation tables cover *L*/*a* ∈ [0, 0.3497] (Pn3m), [0, 0.2350] (Im3m) and [0, 0.2160] (Ia3d). The bound-water layer must also be thinner than the channel radius. Outside these limits the program stops with an explanatory error.
 
 ## How to cite
 
@@ -106,4 +95,4 @@ MIT, see [LICENSE](LICENSE).
 
 ## Contact
 
-Salvatore Assenza, Universidad Autónoma de Madrid (IFIMAC) – [www.salvatoreassenza.com](https://www.salvatoreassenza.com)
+Salvatore Assenza, Universidad Autónoma de Madrid (IFIMAC)
